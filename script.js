@@ -2,6 +2,7 @@ let choice;
 let firstNb;
 let secondNb;
 let resultat;
+let restart;
 
 // functions
 
@@ -24,44 +25,48 @@ function division(numberA, numberB){
     return numberA / numberB;
 }
 
+// restart
+
+do{
 
 // choices
 
-do{
-    choice    = Number(prompt('Que souhaitez-vous faire ?\n\n 1 - Addition\n 2 - Multiplication\n 3 - Soustraction\n 4 - Division\n'));
-} while (isNaN(choice) || choice > 4 || choice < 1);
+    do{
+        choice    = Number(prompt('Que souhaitez-vous faire ?\n\n 1 - Addition\n 2 - Multiplication\n 3 - Soustraction\n 4 - Division\n'));
+    } while (isNaN(choice) || choice > 4 || choice < 1);
 
-do{
-    firstNb  = Number(prompt('Choisissez votre premier nombre.'));
-    secondNb  = Number(prompt('Choisissez votre deuxième nombre.'));
-} while (isNaN(firstNb && secondNb));
+    do{
+        firstNb  = Number(prompt('Choisissez votre premier nombre.'));
+        secondNb  = Number(prompt('Choisissez votre deuxième nombre.'));
+    } while (isNaN(firstNb && secondNb));
 
 
-// call the function
+    // call the function
 
-try {
-    switch (choice){
-        case 1 :
-            resultat = addition(firstNb, secondNb);
-            break;
-        case 2 :
-            resultat = multiplication(firstNb, secondNb);
-            break;
-        case 3 :
-            resultat = soustraction(firstNb, secondNb);
-            break;
-        case 4 :
-            resultat = division(firstNb, secondNb);
-            break;
-        default:
-            throw new Error('Il y a une erreur.');
+    try {
+        switch (choice){
+            case 1 :
+                resultat = addition(firstNb, secondNb);
+                break;
+            case 2 :
+                resultat = multiplication(firstNb, secondNb);
+                break;
+            case 3 :
+                resultat = soustraction(firstNb, secondNb);
+                break;
+            case 4 :
+                resultat = division(firstNb, secondNb);
+                break;
+            default:
+                throw new Error('Il y a une erreur.');
+        }
+        // show the result 
+        alert('Voici le resultat : ' + resultat);
     }
-    // show the result 
-    alert('Voici le resultat : ' + resultat);
-}
-catch(error){
+    catch(error){
 
-    // show the error
-    alert(error.name);
-}
+        // show the error
+        alert(error.name);
+    }
 
+} while (restart = confirm('Voulez-vous refaire un calcul ?'));
